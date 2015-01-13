@@ -118,7 +118,7 @@ uint32_t Timer::getAndResetCount() {
     return t;
 }
 
-void Timer::setPrescalar(uint16_t ps) {
+void Timer::setPrescaler(uint16_t ps) {
     if (_ps_size == 2) {
         switch (ps) {
             case 1: _tcon->tckps = 0; break;

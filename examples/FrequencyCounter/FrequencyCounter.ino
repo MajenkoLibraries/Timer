@@ -18,7 +18,7 @@ void setup() {
 	// the prescaler (and multiply the result accordingly)
 	// or decrease the sample time.
 
-	counter.setPrescalar(1);
+	counter.setPrescaler(1);
 	counter.setPeriod(0xFFFF);
 	
 	// The timer should get its clock source from the input pin

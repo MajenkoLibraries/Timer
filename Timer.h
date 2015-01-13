@@ -50,7 +50,7 @@ class Timer {
 		void attachInterrupt(void (*isr)());
 		void detatchInterrupt();
         void setClockSource(uint8_t src);
-        void setPrescalar(uint16_t ps);
+        void setPrescaler(uint16_t ps);
         void setPeriod(uint32_t per);
         void reset();
         uint32_t getCount();
