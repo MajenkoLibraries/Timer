@@ -7,6 +7,9 @@
 # include <WProgram.h>
 #endif
 
+static const uint8_t TIMER_PB = 0;
+static const uint8_t TIMER_IN = 1;
+
 struct tcon_s {
 	union {
 		uint32_t val;
@@ -35,6 +38,7 @@ class Timer {
 		int _spl;
 		int _ipl;
 		volatile uint32_t *_pr;
+        volatile uint32_t *_tmr;
 		volatile tcon_s *_tcon;
 		int _ps_size;
 		
@@ -45,6 +49,12 @@ class Timer {
 		void stop();
 		void attachInterrupt(void (*isr)());
 		void detatchInterrupt();
+        void setClockSource(uint8_t src);
+        void setPrescalar(uint16_t ps);
+        void setPeriod(uint32_t per);
+        void reset();
+        uint32_t getCount();
+        uint32_t getAndResetCount();
 };
 
 class Timer1 : public Timer {

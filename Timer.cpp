@@ -8,6 +8,7 @@ Timer::Timer() {
 	_irq = 0;
 	_ipl = 0;
 	_spl = 0;
+    _tmr = NULL;
 	_ps_size = 2;
 }
 
@@ -96,6 +97,53 @@ void Timer::detatchInterrupt() {
 	clearIntVector(_vec);
 }
 
+void Timer::setClockSource(uint8_t src) {
+    switch (src) {
+        case TIMER_PB: _tcon->tcs = 0; break;
+        case TIMER_IN: _tcon->tcs = 1; break;
+    }
+}
+
+void Timer::reset() {
+    *_tmr = 0;
+}
+
+uint32_t Timer::getCount() {
+    return *_tmr;
+}
+
+uint32_t Timer::getAndResetCount() {
+    uint32_t t = *_tmr;
+    *_tmr = 0;
+    return t;
+}
+
+void Timer::setPrescalar(uint16_t ps) {
+    if (_ps_size == 2) {
+        switch (ps) {
+            case 1: _tcon->tckps = 0; break;
+            case 8: _tcon->tckps = 1; break;
+            case 64: _tcon->tckps = 2; break;
+            case 256: _tcon->tckps = 3; break;
+        }
+    } else {
+        switch (ps) {
+            case 1: _tcon->tckps = 0; break;
+            case 2: _tcon->tckps = 1; break;
+            case 4: _tcon->tckps = 2; break;
+            case 8: _tcon->tckps = 3; break;
+            case 16: _tcon->tckps = 4; break;
+            case 32: _tcon->tckps = 5; break;
+            case 64: _tcon->tckps = 6; break;
+            case 256: _tcon->tckps = 7; break;
+        }
+    }
+}
+
+void Timer::setPeriod(uint32_t per) {
+    *_pr = per;
+}
+
 Timer1::Timer1() {
 	_vec = _TIMER_1_VECTOR;
 	_irq = _TIMER_1_IRQ;
@@ -104,6 +152,7 @@ Timer1::Timer1() {
 	_tcon = (tcon_s *)&T1CON;
 	_pr = &PR1;
 	_ps_size = 2;
+    _tmr = &TMR1;
 }
 
 Timer1::Timer1(int ipl) {
@@ -114,6 +163,7 @@ Timer1::Timer1(int ipl) {
 	_tcon = (tcon_s *)&T1CON;
 	_pr = &PR1;
 	_ps_size = 2;
+    _tmr = &TMR1;
 }
 
 Timer2::Timer2() {
@@ -124,6 +174,7 @@ Timer2::Timer2() {
 	_tcon = (tcon_s *)&T2CON;
 	_pr = &PR2;
 	_ps_size = 3;
+    _tmr = &TMR2;
 }
 
 Timer2::Timer2(int ipl) {
@@ -134,6 +185,7 @@ Timer2::Timer2(int ipl) {
 	_tcon = (tcon_s *)&T2CON;
 	_pr = &PR2;
 	_ps_size = 3;
+    _tmr = &TMR2;
 }
 
 Timer3::Timer3() {
@@ -144,6 +196,7 @@ Timer3::Timer3() {
 	_tcon = (tcon_s *)&T3CON;
 	_pr = &PR3;
 	_ps_size = 3;
+    _tmr = &TMR3;
 }
 
 Timer3::Timer3(int ipl) {
@@ -154,6 +207,7 @@ Timer3::Timer3(int ipl) {
 	_tcon = (tcon_s *)&T3CON;
 	_pr = &PR3;
 	_ps_size = 3;
+    _tmr = &TMR3;
 }
 
 Timer4::Timer4() {
@@ -164,6 +218,7 @@ Timer4::Timer4() {
 	_tcon = (tcon_s *)&T4CON;
 	_pr = &PR4;
 	_ps_size = 3;
+    _tmr = &TMR4;
 }
 
 Timer4::Timer4(int ipl) {
@@ -174,6 +229,7 @@ Timer4::Timer4(int ipl) {
 	_tcon = (tcon_s *)&T4CON;
 	_pr = &PR4;
 	_ps_size = 3;
+    _tmr = &TMR4;
 }
 
 Timer5::Timer5() {
@@ -184,6 +240,7 @@ Timer5::Timer5() {
 	_tcon = (tcon_s *)&T5CON;
 	_pr = &PR5;
 	_ps_size = 3;
+    _tmr = &TMR5;
 }
 
 Timer5::Timer5(int ipl) {
@@ -194,4 +251,6 @@ Timer5::Timer5(int ipl) {
 	_tcon = (tcon_s *)&T5CON;
 	_pr = &PR5;
 	_ps_size = 3;
+    _tmr = &TMR5;
 }
+
