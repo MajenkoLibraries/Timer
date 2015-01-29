@@ -150,9 +150,9 @@ Timer1::Timer1() {
 	_ipl = 4;
 	_spl = 0;
 	_tcon = (tcon_s *)&T1CON;
-	_pr = &PR1;
+	_pr = (volatile uint32_t *)&PR1;
 	_ps_size = 2;
-    _tmr = &TMR1;
+    _tmr = (volatile uint32_t *)&TMR1;
 }
 
 Timer1::Timer1(int ipl) {
@@ -161,9 +161,9 @@ Timer1::Timer1(int ipl) {
 	_ipl = ipl;
 	_spl = 0;
 	_tcon = (tcon_s *)&T1CON;
-	_pr = &PR1;
+	_pr = (volatile uint32_t *)&PR1;
 	_ps_size = 2;
-    _tmr = &TMR1;
+    _tmr = (volatile uint32_t *)&TMR1;
 }
 
 Timer2::Timer2() {
@@ -172,9 +172,9 @@ Timer2::Timer2() {
 	_ipl = 4;
 	_spl = 0;
 	_tcon = (tcon_s *)&T2CON;
-	_pr = &PR2;
+	_pr = (volatile uint32_t *)&PR2;
 	_ps_size = 3;
-    _tmr = &TMR2;
+    _tmr = (volatile uint32_t *)&TMR2;
 }
 
 Timer2::Timer2(int ipl) {
@@ -183,9 +183,9 @@ Timer2::Timer2(int ipl) {
 	_ipl = ipl;
 	_spl = 0;
 	_tcon = (tcon_s *)&T2CON;
-	_pr = &PR2;
+	_pr = (volatile uint32_t *)&PR2;
 	_ps_size = 3;
-    _tmr = &TMR2;
+    _tmr = (volatile uint32_t *)&TMR2;
 }
 
 Timer3::Timer3() {
@@ -194,9 +194,9 @@ Timer3::Timer3() {
 	_ipl = 4;
 	_spl = 0;
 	_tcon = (tcon_s *)&T3CON;
-	_pr = &PR3;
+	_pr = (volatile uint32_t *)&PR3;
 	_ps_size = 3;
-    _tmr = &TMR3;
+    _tmr = (volatile uint32_t *)&TMR3;
 }
 
 Timer3::Timer3(int ipl) {
@@ -205,9 +205,9 @@ Timer3::Timer3(int ipl) {
 	_ipl = ipl;
 	_spl = 0;
 	_tcon = (tcon_s *)&T3CON;
-	_pr = &PR3;
+	_pr = (volatile uint32_t *)&PR3;
 	_ps_size = 3;
-    _tmr = &TMR3;
+    _tmr = (volatile uint32_t *)&TMR3;
 }
 
 Timer4::Timer4() {
@@ -216,9 +216,9 @@ Timer4::Timer4() {
 	_ipl = 4;
 	_spl = 0;
 	_tcon = (tcon_s *)&T4CON;
-	_pr = &PR4;
+	_pr = (volatile uint32_t *)&PR4;
 	_ps_size = 3;
-    _tmr = &TMR4;
+    _tmr = (volatile uint32_t *)&TMR4;
 }
 
 Timer4::Timer4(int ipl) {
@@ -227,9 +227,9 @@ Timer4::Timer4(int ipl) {
 	_ipl = ipl;
 	_spl = 0;
 	_tcon = (tcon_s *)&T4CON;
-	_pr = &PR4;
+	_pr = (volatile uint32_t *)&PR4;
 	_ps_size = 3;
-    _tmr = &TMR4;
+    _tmr = (volatile uint32_t *)&TMR4;
 }
 
 Timer5::Timer5() {
@@ -238,9 +238,9 @@ Timer5::Timer5() {
 	_ipl = 4;
 	_spl = 0;
 	_tcon = (tcon_s *)&T5CON;
-	_pr = &PR5;
+	_pr = (volatile uint32_t *)&PR5;
 	_ps_size = 3;
-    _tmr = &TMR5;
+    _tmr = (volatile uint32_t *)&TMR5;
 }
 
 Timer5::Timer5(int ipl) {
@@ -249,8 +249,8 @@ Timer5::Timer5(int ipl) {
 	_ipl = ipl;
 	_spl = 0;
 	_tcon = (tcon_s *)&T5CON;
-	_pr = &PR5;
+	_pr = (volatile uint32_t *)&PR5;
 	_ps_size = 3;
-    _tmr = &TMR5;
+    _tmr = (volatile uint32_t *)&TMR5;
 }
 
