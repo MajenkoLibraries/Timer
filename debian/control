@@ -1,0 +1,14 @@
+Source: libtimer-chipkit
+Section: libraries
+Priority: extra
+XBSC-Group: Misc
+XBSC-Family: pic32
+Maintainer: Matt Jenkins <matt@majenko.co.uk>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+
+Package: libtimer-chipkit
+Architecture: all
+Depends: chipkit
+Description: Timer library for chipkit
+
