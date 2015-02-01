@@ -55,6 +55,8 @@ class Timer {
         void reset();
         uint32_t getCount();
         uint32_t getAndResetCount();
+        void enableGate();
+        void disableGate();
 };
 
 class Timer1 : public Timer {

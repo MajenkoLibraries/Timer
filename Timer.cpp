@@ -17,57 +17,58 @@ void Timer::begin() {
 }
 
 void Timer::setFrequency(uint32_t f) {
-	uint32_t baseclock = F_CPU;
+    uint32_t f_pb = getPeripheralClock();
+	uint32_t baseclock = f_pb;
 	uint8_t ps = 0;
 
 	if (_ps_size == 2) {
 		if (baseclock / f > 65535) {
-			baseclock = F_CPU / 8;
+			baseclock = f_pb / 8;
 			ps = 1;
 		}
 	
 	    if (baseclock / f > 65535) {
-	        baseclock = F_CPU / 64;
+	        baseclock = f_pb / 64;
 	        ps = 2;
 	    }
 	
 	    if (baseclock / f > 65535) {
-	        baseclock = F_CPU / 256;
+	        baseclock = f_pb / 256;
 	        ps = 3;
 	    }
 	} else {
 		if (baseclock / f > 65535) {
-			baseclock = F_CPU / 2;
+			baseclock = f_pb / 2;
 			ps = 1;
 		}
 	
 	    if (baseclock / f > 65535) {
-	        baseclock = F_CPU / 4;
+	        baseclock = f_pb / 4;
 	        ps = 2;
 	    }
 	
 	    if (baseclock / f > 65535) {
-	        baseclock = F_CPU / 8;
+	        baseclock = f_pb / 8;
 	        ps = 3;
 	    }
 	
 	    if (baseclock / f > 65535) {
-	        baseclock = F_CPU / 16;
+	        baseclock = f_pb / 16;
 	        ps = 4;
 	    }
 	
 	    if (baseclock / f > 65535) {
-	        baseclock = F_CPU / 32;
+	        baseclock = f_pb / 32;
 	        ps = 5;
 	    }
 	
 	    if (baseclock / f > 65535) {
-	        baseclock = F_CPU / 64;
+	        baseclock = f_pb / 64;
 	        ps = 6;
 	    }
 	
 	    if (baseclock / f > 65535) {
-	        baseclock = F_CPU / 256;
+	        baseclock = f_pb / 256;
 	        ps = 7;
 	    }
 	}
@@ -143,6 +144,19 @@ void Timer::setPrescaler(uint16_t ps) {
 void Timer::setPeriod(uint32_t per) {
     *_pr = per;
 }
+
+void Timer::enableGate() {
+    _tcon->tgate = 1;
+}
+
+void Timer::disableGate() {
+    _tcon->tgate = 0;
+}
+
+/****
+ * The five timer instances. These are the classes which you 
+ * should use for defining the timer in your sketch.
+ ****/
 
 Timer1::Timer1() {
 	_vec = _TIMER_1_VECTOR;
@@ -253,4 +267,5 @@ Timer5::Timer5(int ipl) {
 	_ps_size = 3;
     _tmr = (volatile uint32_t *)&TMR5;
 }
+
 
