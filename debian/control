@@ -9,6 +9,7 @@ Standards-Version: 3.9.4
 
 Package: libtimer-chipkit
 Architecture: all
+Provides: Timer.h
 Depends: chipkit
 Description: Timer library for chipkit
 
