@@ -86,6 +86,35 @@ class Timer4 : public Timer {
 class Timer5 : public Timer {
 	public:
 		Timer5();	
-		Timer5(int);};
+		Timer5(int);
+};
+
+#ifdef __PIC32MZ__
+
+class Timer6 : public Timer {
+	public:
+		Timer6();	
+		Timer6(int);
+};
+
+class Timer7 : public Timer {
+	public:
+		Timer7();	
+		Timer7(int);
+};
+
+class Timer8 : public Timer {
+	public:
+		Timer8();	
+		Timer8(int);
+};
+
+class Timer9 : public Timer {
+	public:
+		Timer9();	
+		Timer9(int);
+};
+
+#endif
 
 #endif

@@ -160,7 +160,11 @@ void Timer::disableGate() {
 
 Timer1::Timer1() {
 	_vec = _TIMER_1_VECTOR;
+#ifdef __PIC32MZ__
+	_irq = _TIMER_1_VECTOR;
+#else
 	_irq = _TIMER_1_IRQ;
+#endif
 	_ipl = 4;
 	_spl = 0;
 	_tcon = (tcon_s *)&T1CON;
@@ -171,7 +175,11 @@ Timer1::Timer1() {
 
 Timer1::Timer1(int ipl) {
 	_vec = _TIMER_1_VECTOR;
+#ifdef __PIC32MZ__
+	_irq = _TIMER_1_VECTOR;
+#else
 	_irq = _TIMER_1_IRQ;
+#endif
 	_ipl = ipl;
 	_spl = 0;
 	_tcon = (tcon_s *)&T1CON;
@@ -182,7 +190,11 @@ Timer1::Timer1(int ipl) {
 
 Timer2::Timer2() {
 	_vec = _TIMER_2_VECTOR;
+#ifdef __PIC32MZ__
+	_irq = _TIMER_2_VECTOR;
+#else
 	_irq = _TIMER_2_IRQ;
+#endif
 	_ipl = 4;
 	_spl = 0;
 	_tcon = (tcon_s *)&T2CON;
@@ -193,7 +205,11 @@ Timer2::Timer2() {
 
 Timer2::Timer2(int ipl) {
 	_vec = _TIMER_2_VECTOR;
+#ifdef __PIC32MZ__
+	_irq = _TIMER_2_VECTOR;
+#else
 	_irq = _TIMER_2_IRQ;
+#endif
 	_ipl = ipl;
 	_spl = 0;
 	_tcon = (tcon_s *)&T2CON;
@@ -204,7 +220,11 @@ Timer2::Timer2(int ipl) {
 
 Timer3::Timer3() {
 	_vec = _TIMER_3_VECTOR;
+#ifdef __PIC32MZ__
+	_irq = _TIMER_3_VECTOR;
+#else
 	_irq = _TIMER_3_IRQ;
+#endif
 	_ipl = 4;
 	_spl = 0;
 	_tcon = (tcon_s *)&T3CON;
@@ -215,7 +235,11 @@ Timer3::Timer3() {
 
 Timer3::Timer3(int ipl) {
 	_vec = _TIMER_3_VECTOR;
+#ifdef __PIC32MZ__
+	_irq = _TIMER_3_VECTOR;
+#else
 	_irq = _TIMER_3_IRQ;
+#endif
 	_ipl = ipl;
 	_spl = 0;
 	_tcon = (tcon_s *)&T3CON;
@@ -226,7 +250,11 @@ Timer3::Timer3(int ipl) {
 
 Timer4::Timer4() {
 	_vec = _TIMER_4_VECTOR;
+#ifdef __PIC32MZ__
+	_irq = _TIMER_4_VECTOR;
+#else
 	_irq = _TIMER_4_IRQ;
+#endif
 	_ipl = 4;
 	_spl = 0;
 	_tcon = (tcon_s *)&T4CON;
@@ -237,7 +265,11 @@ Timer4::Timer4() {
 
 Timer4::Timer4(int ipl) {
 	_vec = _TIMER_4_VECTOR;
+#ifdef __PIC32MZ__
+	_irq = _TIMER_4_VECTOR;
+#else
 	_irq = _TIMER_4_IRQ;
+#endif
 	_ipl = ipl;
 	_spl = 0;
 	_tcon = (tcon_s *)&T4CON;
@@ -248,7 +280,11 @@ Timer4::Timer4(int ipl) {
 
 Timer5::Timer5() {
 	_vec = _TIMER_5_VECTOR;
+#ifdef __PIC32MZ__
+	_irq = _TIMER_5_VECTOR;
+#else
 	_irq = _TIMER_5_IRQ;
+#endif
 	_ipl = 4;
 	_spl = 0;
 	_tcon = (tcon_s *)&T5CON;
@@ -259,7 +295,11 @@ Timer5::Timer5() {
 
 Timer5::Timer5(int ipl) {
 	_vec = _TIMER_5_VECTOR;
+#ifdef __PIC32MZ__
+	_irq = _TIMER_5_VECTOR;
+#else
 	_irq = _TIMER_5_IRQ;
+#endif
 	_ipl = ipl;
 	_spl = 0;
 	_tcon = (tcon_s *)&T5CON;
@@ -268,4 +308,94 @@ Timer5::Timer5(int ipl) {
     _tmr = (volatile uint32_t *)&TMR5;
 }
 
+#ifdef __PIC32MZ__
 
+Timer6::Timer6() {
+	_vec = _TIMER_6_VECTOR;
+	_irq = _TIMER_6_VECTOR;
+	_ipl = 4;
+	_spl = 0;
+	_tcon = (tcon_s *)&T6CON;
+	_pr = (volatile uint32_t *)&PR6;
+	_ps_size = 3;
+    _tmr = (volatile uint32_t *)&TMR6;
+}
+
+Timer6::Timer6(int ipl) {
+	_vec = _TIMER_6_VECTOR;
+	_irq = _TIMER_6_VECTOR;
+	_ipl = ipl;
+	_spl = 0;
+	_tcon = (tcon_s *)&T6CON;
+	_pr = (volatile uint32_t *)&PR6;
+	_ps_size = 3;
+    _tmr = (volatile uint32_t *)&TMR6;
+}
+
+Timer7::Timer7() {
+	_vec = _TIMER_7_VECTOR;
+	_irq = _TIMER_7_VECTOR;
+	_ipl = 4;
+	_spl = 0;
+	_tcon = (tcon_s *)&T7CON;
+	_pr = (volatile uint32_t *)&PR7;
+	_ps_size = 3;
+    _tmr = (volatile uint32_t *)&TMR7;
+}
+
+Timer7::Timer7(int ipl) {
+	_vec = _TIMER_7_VECTOR;
+	_irq = _TIMER_7_VECTOR;
+	_ipl = ipl;
+	_spl = 0;
+	_tcon = (tcon_s *)&T7CON;
+	_pr = (volatile uint32_t *)&PR7;
+	_ps_size = 3;
+    _tmr = (volatile uint32_t *)&TMR7;
+}
+
+Timer8::Timer8() {
+	_vec = _TIMER_8_VECTOR;
+	_irq = _TIMER_8_VECTOR;
+	_ipl = 4;
+	_spl = 0;
+	_tcon = (tcon_s *)&T8CON;
+	_pr = (volatile uint32_t *)&PR8;
+	_ps_size = 3;
+    _tmr = (volatile uint32_t *)&TMR8;
+}
+
+Timer8::Timer8(int ipl) {
+	_vec = _TIMER_8_VECTOR;
+	_irq = _TIMER_8_VECTOR;
+	_ipl = ipl;
+	_spl = 0;
+	_tcon = (tcon_s *)&T8CON;
+	_pr = (volatile uint32_t *)&PR8;
+	_ps_size = 3;
+    _tmr = (volatile uint32_t *)&TMR8;
+}
+
+Timer9::Timer9() {
+	_vec = _TIMER_9_VECTOR;
+	_irq = _TIMER_9_VECTOR;
+	_ipl = 4;
+	_spl = 0;
+	_tcon = (tcon_s *)&T9CON;
+	_pr = (volatile uint32_t *)&PR9;
+	_ps_size = 3;
+    _tmr = (volatile uint32_t *)&TMR9;
+}
+
+Timer9::Timer9(int ipl) {
+	_vec = _TIMER_9_VECTOR;
+	_irq = _TIMER_9_VECTOR;
+	_ipl = ipl;
+	_spl = 0;
+	_tcon = (tcon_s *)&T9CON;
+	_pr = (volatile uint32_t *)&PR9;
+	_ps_size = 3;
+    _tmr = (volatile uint32_t *)&TMR9;
+}
+
+#endif
