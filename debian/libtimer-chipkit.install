@@ -1,6 +1,0 @@
-LICENSE usr/share/doc/libtimer-chipkit/
-README.md usr/share/doc/libtimer-chipkit/
-Timer.cpp libraries/Time/chipkit/Timer/
-Timer.h libraries/Time/chipkit/Timer/
-examples/TimerBlink/TimerBlink.ino libraries/Time/chipkit/Timer/examples/TimerBlink
-examples/FrequencyCounter/FrequencyCounter.ino libraries/Time/chipkit/Timer/examples/FrequencyCounter
